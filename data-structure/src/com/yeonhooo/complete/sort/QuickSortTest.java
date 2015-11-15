@@ -1,11 +1,49 @@
-package com.yeonhooo.training.sort;
+package com.yeonhooo.complete.sort;
 
 class QuickSort {
 	int i = 0;
 
 	public int partition(int a[], int begin, int end) {
-		// TODO 구현 코드 작성
-		return 0;
+		int pivot, temp, L, R, t;
+
+		L = begin;
+		R = end;
+		pivot = (begin + end) / 2;
+		System.out.printf("\n [퀵정렬 %d 단계 : pivot=%d ]\n", ++i, a[pivot]);
+
+		while (L < R) {
+			while ((a[L] < a[pivot]) && (L < R)) {
+				L++;
+			}
+			while ((a[R] >= a[pivot]) && (L < R)) {
+				R--;
+			}
+			if (L < R) {
+				temp = a[L];
+				a[L] = a[R];
+				a[R] = temp;
+
+				if (L == pivot) {// L과 R 원소를 교환하여, 결과적으로 피봇원소의 위치가 변경된 경우
+					for (t = 0; t < a.length; t++) {
+						System.out.printf("%3d  ", a[t]);
+					}
+					System.out.println();
+
+					return R;
+				}
+			}
+		}
+
+		// (L == R)이 된 경우
+		temp = a[pivot];
+		a[pivot] = a[R];
+		a[R] = temp;
+		for (t = 0; t < a.length; t++) {
+			System.out.printf("%3d  ", a[t]);
+		}
+		System.out.println();
+
+		return R;
 	}
 	
 	public int partition2(int a[], int begin, int end) {

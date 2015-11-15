@@ -1,4 +1,4 @@
-package com.yeonhooo.training.sort;
+package com.yeonhooo.complete.sort;
 
 class SelectionSort {
 	/*
@@ -6,7 +6,22 @@ class SelectionSort {
 	 * Page.415
 	 */
 	public void selectionSort(int a[]) {
-		// TODO 구현 연습
+		int i, j, min;
+		
+		for (i = 0; i < a.length - 1; i++) {
+			min = i;
+			
+			for (j = i + 1; j < a.length; j++) {
+				if (a[j] < a[min])
+					min = j;	// 가장 작은 수를 선택
+			}
+			swap(a, min, i);
+			
+			System.out.printf("\n선택 정렬 %d 단계 : ", i + 1);
+			for (j = 0; j < a.length - 1; j++) {
+				System.out.printf("%3d ", a[j]);
+			}
+		}
 	}
 
 	public void swap(int a[], int i, int j) {
